@@ -82,7 +82,7 @@ class PACKT extends React.Component {
       );
       case 'createNote':
       return(
-        <Text> Create Note </Text>
+        <Text>Create Note</Text>
       );
         break;
       default:
@@ -90,14 +90,4 @@ class PACKT extends React.Component {
     }
   }
 };
-
-
-var styles =  StyleSheet.create({
-  container:{
-    flex:1,
-    justifyContent : 'center',
-    alignItems: 'center',
-  }
-});
-
 AppRegistry.registerComponent('PACKT', () => PACKT);
