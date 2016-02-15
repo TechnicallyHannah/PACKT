@@ -5,10 +5,12 @@
 'use strict';
 import React, {
   AppRegistry,
+  Component,
   StyleSheet,
-  View,
   Text,
-  Navigator
+  View,
+  Navigator,
+  BackAndroid
 } from 'react-native';
 
 import SimpleButton from './app/components/SimpleButton';
@@ -78,11 +80,11 @@ class PACKT extends React.Component {
     switch (route.name) {
       case 'home':
       return(
-        <Text>React Notes</Text>
+        <Text style={styles.title}>React Notes</Text>
       );
       case 'createNote':
       return(
-        <Text>Create Note</Text>
+        <Text style={styles.title}>Create Note</Text>
       );
         break;
       default:
@@ -90,4 +92,17 @@ class PACKT extends React.Component {
     }
   }
 };
+
+var styles = StyleSheet.create({
+  leftButton:{
+    textAlign:'left',
+  },
+  rightButton:{
+    textAlign:'right',
+  },
+  title:{
+    textAlign:'center',
+  },
+});
+
 AppRegistry.registerComponent('PACKT', () => PACKT);

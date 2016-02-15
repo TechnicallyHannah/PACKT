@@ -90,16 +90,7 @@ class PACKT extends React.Component {
       default:
         return null;
     }
-  }
+
+  },
 };
-
-
-var styles =  StyleSheet.create({
-  container:{
-    flex:1,
-    justifyContent : 'center',
-    alignItems: 'center',
-  }
-});
-
 AppRegistry.registerComponent('PACKT', () => PACKT);
