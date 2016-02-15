@@ -12,20 +12,14 @@ import React, {
 
 import SimpleButton from './app/components/SimpleButton';
 import NoteScreen from './app/components/NoteScreen';
+import HomeScreen from './app/components/HomeScreen';
 
 class PACKT extends React.Component {
   renderScene(route,navigator){
     switch(route.name){
       case'home':
         return(
-          <View style={styles.container}>
-            <SimpleButton onPress ={() => { navigator.push({
-                  name:'createNote'
-              });
-            }}
-              customText = "Create Note"
-              />
-          </View>
+          <HomeScreen/>
         );
         case 'createNote':
         return(

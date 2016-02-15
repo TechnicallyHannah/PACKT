@@ -4,11 +4,11 @@ import React, {
   StyleSheet,
 } from 'react-native';
 
-export default class NoteScreen extends React.Component{
+export default class HomeScreen extends React.Component{
   render(){
     return(
-      <View style={styles.container}>
-        <Text>Create Note Screen!</Text>
+      <View style ={styles.container}>
+        <Text>Home</Text>
       </View>
     );
   }
