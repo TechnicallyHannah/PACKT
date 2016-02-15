@@ -48,16 +48,6 @@ class PACKT extends React.Component {
  var NavigationBarRouteMapper = {
   LeftButton: function(route, navigator, index, navState){
     switch (route.name) {
-      case 'home':
-      return(
-        <SimpleButton onPress={ ()=> {
-            navigator.push({
-              name: 'createNote'
-            });
-          }}
-          customText='Create Note'
-          />
-      );
       case 'createNote':
       return(
         <SimpleButton onPress={ ()=> navigator.pop() }
@@ -70,12 +60,38 @@ class PACKT extends React.Component {
     }
   },
   RightButton: function(route,navigator,index, navState){
-
+    switch (route.name) {
+    case 'home':
+    return(
+      <SimpleButton onPress={ ()=> {
+          navigator.push({
+            name: 'createNote'
+          });
+        }}
+        customText='Create Note'
+        />
+    );
+    break;
+    default:
+      return null;
+    }
   },
   Title: function(route,navigator,index, navState){
-
-  },
- }
+    switch (route.name) {
+      case 'home':
+      return(
+        <Text>React Notes</Text>
+      );
+      case 'createNote':
+      return(
+        <Text> Create Note </Text>
+      );
+        break;
+      default:
+        return null;
+    }
+  }
+};
 
 
 var styles =  StyleSheet.create({

@@ -7,6 +7,7 @@ import React, {
   AppRegistry,
   StyleSheet,
   View,
+  Text,
   Navigator
 } from 'react-native';
 
@@ -19,7 +20,7 @@ class PACKT extends React.Component {
     switch(route.name){
       case'home':
         return(
-          <HomeScreen/>
+        <HomeScreen/>
         );
         case 'createNote':
         return(
@@ -42,37 +43,54 @@ class PACKT extends React.Component {
   }
 }
 
-var NavigationBarRouteMapper = {
- LeftButton: function(route, navigator, index, navState){
-   switch (route.name) {
-     case 'home':
-     return(
-       <SimpleButton onPress={ ()=> {
-           navigator.push({
-             name: 'createNote'
-           });
-         }}
-         customText='Create Note'
-         />
-     );
-     case 'createNote':
-     return(
-       <SimpleButton onPress={ ()=> navigator.pop() }
-         customText='Back'
-         />
-     );
-       break;
-     default:
-       return null;
-   }
- },
- RightButton: function(route,navigator,index, navState){
+ var NavigationBarRouteMapper = {
+  LeftButton: function(route, navigator, index, navState){
+    switch (route.name) {
+      case 'createNote':
+      return(
+        <SimpleButton onPress={ ()=> navigator.pop() }
+          customText='Back'
+          />
+      );
+        break;
+      default:
+        return null;
+    }
+  },
+  RightButton: function(route,navigator,index, navState){
+    switch (route.name) {
+    case 'home':
+    return(
+      <SimpleButton onPress={ ()=> {
+          navigator.push({
+            name: 'createNote'
+          });
+        }}
+        customText='Create Note'
+        />
+    );
+    break;
+    default:
+      return null;
+    }
+  },
+  Title: function(route,navigator,index, navState){
+    switch (route.name) {
+      case 'home':
+      return(
+        <Text>React Notes</Text>
+      );
+      case 'createNote':
+      return(
+        <Text> Create Note </Text>
+      );
+        break;
+      default:
+        return null;
+    }
+  }
+};
 
- },
- Title: function(route,navigator,index, navState){
-
- },
-}
 
 var styles =  StyleSheet.create({
   container:{
@@ -81,4 +99,5 @@ var styles =  StyleSheet.create({
     alignItems: 'center',
   }
 });
+
 AppRegistry.registerComponent('PACKT', () => PACKT);
