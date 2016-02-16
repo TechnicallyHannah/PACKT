@@ -27,7 +27,7 @@ class PACKT extends React.Component {
         case 'createNote':
         return(
           <NoteScreen/>
-        )
+        );
     }
   }
   render(){
@@ -37,7 +37,7 @@ class PACKT extends React.Component {
         renderScene={this.renderScene}
         navigationBar={
           <Navigator.NavigationBar
-            routeMapper={ NavigationBarRouteMapper}
+            routeMapper={ NavigationBarRouteMapper }
           />
         }
       />
@@ -84,7 +84,7 @@ class PACKT extends React.Component {
       );
       case 'createNote':
       return(
-        <Text> Create Note </Text>
+        <Text>Create Note</Text>
       );
         break;
       default:

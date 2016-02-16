@@ -7,18 +7,18 @@ import React, {
 export default class NoteScreen extends React.Component{
   render(){
     return(
-      <View style={styles.container}>
+      <View collapsable={false} style={styles.container}>
         <TextInput
           ref="title"
           placeholder="Untitled"
-          style={styles.title}
+          style={styles.titleBox}
           autoFocus={true}
           onEndEditing={(text) =>{this.refs.body.focus()}}/>
         <TextInput
           ref="body"
           multiline={true}
           placeholder="Start Typing"
-          style={styles.body}/>
+          style={styles.bodyBox}/>
       </View>
     );
   }
@@ -27,14 +27,14 @@ export default class NoteScreen extends React.Component{
 var styles = StyleSheet.create({
   container:{
     flex:1,
-    justifyContent:'center',
-    alignItems:'center',
-    marginTop:64,
+    marginTop:64
   },
-  title:{
-    height: 40
+  titleBox:{
+    height: 40,
+    borderWidth: 2,
   },
-  body:{
-    flex :1
+  bodyBox:{
+    flex :1,
+    borderWidth:10
   }
 });

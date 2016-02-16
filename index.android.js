@@ -2,107 +2,51 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
-'use strict';
-import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View,
-  Navigator,
-  BackAndroid
-} from 'react-native';
+ 'use strict';
+ import React, {
+   AppRegistry,
+   Component,
+   StyleSheet,
+   Text,
+   View,
+   Navigator,
+   ToolbarAndroid
+ } from 'react-native';
 
-import SimpleButton from './app/components/SimpleButton';
-import NoteScreen from './app/components/NoteScreen';
-import HomeScreen from './app/components/HomeScreen';
 
-class PACKT extends React.Component {
-  renderScene(route,navigator){
-    switch(route.name){
-      case'home':
-        return(
+ import SimpleButton from './app/components/SimpleButton';
+ import NoteScreen from './app/components/NoteScreen';
+ import HomeScreen from './app/components/HomeScreen';
+
+ class PACKT extends React.Component {
+   render(){
+     return(
+       <View style={styles.container}>
+        <ToolbarAndroid
+          title="React Notes"
+          style={styles.toolbar}
+          actions={[{title: 'Create'},{title: 'Delete'}]}
+          onActionSelected={this.onActionSelected}
+         />
         <HomeScreen/>
-        );
-        case 'createNote':
-        return(
-          <NoteScreen/>
-        )
-    }
-  }
-  render(){
-    return(
-      <Navigator
-        initialRoute={{name: 'home'}}
-        renderScene={this.renderScene}
-        navigationBar={
-          <Navigator.NavigationBar
-            routeMapper={ NavigationBarRouteMapper}
-          />
-        }
-      />
-    );
-  }
-}
+      </View>
+     );
+   }
+   onActionSelected(position){
+     if (position === 0) { // index of 'Settings'
+       console.log("create!");
+     }
+   }
+ }
 
- var NavigationBarRouteMapper = {
-  LeftButton: function(route, navigator, index, navState){
-    switch (route.name) {
-      case 'createNote':
-      return(
-        <SimpleButton onPress={ ()=> navigator.pop() }
-          customText='Back'
-          />
-      );
-        break;
-      default:
-        return null;
-    }
-  },
-  RightButton: function(route,navigator,index, navState){
-    switch (route.name) {
-    case 'home':
-    return(
-      <SimpleButton onPress={ ()=> {
-          navigator.push({
-            name: 'createNote'
-          });
-        }}
-        customText='Create Note'
-        />
-    );
-    break;
-    default:
-      return null;
-    }
-  },
-  Title: function(route,navigator,index, navState){
-    switch (route.name) {
-      case 'home':
-      return(
-        <Text style={styles.title}>React Notes</Text>
-      );
-      case 'createNote':
-      return(
-        <Text style={styles.title}>Create Note</Text>
-      );
-        break;
-      default:
-        return null;
-    }
-  }
-};
 
-var styles = StyleSheet.create({
-  leftButton:{
-    textAlign:'left',
-  },
-  rightButton:{
-    textAlign:'right',
-  },
-  title:{
-    textAlign:'center',
-  },
-});
-
+ var styles = StyleSheet.create({
+   container: {
+     flex: 1,
+   },
+   toolbar: {
+     backgroundColor: '#e9eaed',
+     height: 56,
+   }
+ });
 AppRegistry.registerComponent('PACKT', () => PACKT);
